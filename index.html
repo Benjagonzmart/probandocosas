@@ -56,6 +56,16 @@
       z-index: 1;
     }
 
+    /* Mensaje bonito */
+    #mensaje {
+      margin-top: 30px;
+      font-size: 2rem;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 10px #e91e63;
+      display: none;
+    }
+
     /* 🦋 Mariposas flotantes */
     #mariposas-container img {
       position: absolute;
@@ -83,9 +93,11 @@
 
   <h1>¿Me quieres?</h1>
   <div class="botones">
-    <button id="btn-si" onclick="alert('¡Yo también! ❤️')">Sí</button>
+    <button id="btn-si">Sí</button>
     <button id="btn-no">No</button>
   </div>
+
+  <div id="mensaje"></div>
 
   <!-- 🦋 Contenedor de mariposas -->
   <div id="mariposas-container"></div>
@@ -106,11 +118,20 @@
       btnNo.style.top = `${randomY}px`;
     });
 
+    // Mensaje bonito para botón "Sí"
+    const btnSi = document.getElementById("btn-si");
+    const mensaje = document.getElementById("mensaje");
+
+    btnSi.addEventListener("click", () => {
+      mensaje.textContent = "¡Yo también! ❤️";
+      mensaje.style.display = "block";
+    });
+
     // 🦋 Crear mariposas animadas
     const container = document.getElementById("mariposas-container");
     for (let i = 0; i < 10; i++) {
       const img = document.createElement("img");
-      img.src = "https://www.infobae.com/resizer/v2/4MD2IOSULFA4FLQFDG5A42ZUV4.png?auth=8c0f2b7f47c00efb8041fd4f249b1f46e354e06fcb9bf5ebe45651458d1bb0c8&smart=true&width=350&height=350&quality=85"; // Cambia por otra si quieres
+      img.src = "https://www.infobae.com/resizer/v2/4MD2IOSULFA4FLQFDG5A42ZUV4.png?auth=8c0f2b7f47c00efb8041fd4f249b1f46e354e06fcb9bf5ebe45651458d1bb0c8&smart=true&width=350&height=350&quality=85";
       img.style.top = `${Math.random() * 100}%`;
       img.style.left = `${Math.random() * 100}%`;
       img.style.animationDuration = `${5 + Math.random() * 5}s`;
@@ -121,7 +142,7 @@
     const container2 = document.getElementById("sadHamster-container");
     for (let i = 0; i < 10; i++) {
       const img = document.createElement("img");
-      img.src = "https://www.pngall.com/wp-content/uploads/17/Sad-Hamster-Seeking-Comfort-From-Owner-PNG-thumb.png"; // Cambia por otra si quieres
+      img.src = "https://www.infobae.com/resizer/v2/4MD2IOSULFA4FLQFDG5A42ZUV4.png?auth=8c0f2b7f47c00efb8041fd4f249b1f46e354e06fcb9bf5ebe45651458d1bb0c8&smart=true&width=350&height=350&quality=85";
       img.style.top = `${Math.random() * 100}%`;
       img.style.left = `${Math.random() * 100}%`;
       img.style.animationDuration = `${5 + Math.random() * 5}s`;
