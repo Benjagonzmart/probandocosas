@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Me quieres?</title>
+  <style>
+    /* 🎨 Fondo animado */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+      background-size: 400% 400%;
+      animation: fondoAnimado 15s ease infinite;
+    }
+
+    @keyframes fondoAnimado {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-top: 80px;
+      color: #fff;
+    }
+
+    .botones {
+      position: relative;
+      height: 500px;
+      margin-top: 40px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 20px;
+      position: absolute;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffffffaa;
+      transition: 0.2s;
+    }
+
+    #btn-si {
+      left: 40%;
+      top: 40%;
+      z-index: 1;
+    }
+
+    #btn-no {
+      transition: top 0.2s, left 0.2s;
+      z-index: 1;
+    }
+
+    /* 🦋 Mariposas flotantes */
+    #mariposas-container img {
+      position: absolute;
+      width: 40px;
+      animation: flotar linear infinite;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    #sadHamster-container img {
+      position: absolute;
+      width: 40px;
+      animation: flotar linear infinite;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    @keyframes flotar {
+      0%   { transform: translateY(0px) rotate(0deg); }
+      50%  { transform: translateY(-50px) rotate(15deg); }
+      100% { transform: translateY(0px) rotate(-15deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¿Me quieres?</h1>
+  <div class="botones">
+    <button id="btn-si" onclick="alert('¡Yo también! ❤️')">Sí</button>
+    <button id="btn-no">No</button>
+  </div>
+
+  <!-- 🦋 Contenedor de mariposas -->
+  <div id="mariposas-container"></div>
+  <div id="sadHamster-container"></div>
+
+  <script>
+    // 🧠 Movimiento del botón "No"
+    const btnNo = document.getElementById("btn-no");
+    btnNo.addEventListener("mouseenter", () => {
+      const contenedor = document.querySelector(".botones");
+      const maxX = contenedor.clientWidth - btnNo.clientWidth;
+      const maxY = contenedor.clientHeight - btnNo.clientHeight;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      btnNo.style.left = `${randomX}px`;
+      btnNo.style.top = `${randomY}px`;
+    });
+
+    // 🦋 Crear mariposas animadas
+    const container = document.getElementById("mariposas-container");
+    for (let i = 0; i < 10; i++) {
+      const img = document.createElement("img");
+      img.src = "https://www.infobae.com/resizer/v2/4MD2IOSULFA4FLQFDG5A42ZUV4.png?auth=8c0f2b7f47c00efb8041fd4f249b1f46e354e06fcb9bf5ebe45651458d1bb0c8&smart=true&width=350&height=350&quality=85"; // Cambia por otra si quieres
+      img.style.top = `${Math.random() * 100}%`;
+      img.style.left = `${Math.random() * 100}%`;
+      img.style.animationDuration = `${5 + Math.random() * 5}s`;
+      container.appendChild(img);
+    }
+    
+    // 🦋 Crear mariposas animadas
+    const container2 = document.getElementById("sadHamster-container");
+    for (let i = 0; i < 10; i++) {
+      const img = document.createElement("img");
+      img.src = "https://www.pngall.com/wp-content/uploads/17/Sad-Hamster-Seeking-Comfort-From-Owner-PNG-thumb.png"; // Cambia por otra si quieres
+      img.style.top = `${Math.random() * 100}%`;
+      img.style.left = `${Math.random() * 100}%`;
+      img.style.animationDuration = `${5 + Math.random() * 5}s`;
+      container.appendChild(img);
+    }
+
+  </script>
+
+</body>
+</html>
