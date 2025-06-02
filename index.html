@@ -67,13 +67,7 @@
     }
 
     /* 🦋 Mariposas flotantes */
-    #mariposas-container img {
-      position: absolute;
-      width: 40px;
-      animation: flotar linear infinite;
-      pointer-events: none;
-      opacity: 0.7;
-    }
+    #mariposas-container img,
     #sadHamster-container img {
       position: absolute;
       width: 40px;
@@ -104,9 +98,10 @@
   <div id="sadHamster-container"></div>
 
   <script>
-    // 🧠 Movimiento del botón "No"
+    // 🧠 Movimiento del botón "No" (PC + Celular)
     const btnNo = document.getElementById("btn-no");
-    btnNo.addEventListener("mouseenter", () => {
+
+    function moverBotonNo() {
       const contenedor = document.querySelector(".botones");
       const maxX = contenedor.clientWidth - btnNo.clientWidth;
       const maxY = contenedor.clientHeight - btnNo.clientHeight;
@@ -116,6 +111,12 @@
 
       btnNo.style.left = `${randomX}px`;
       btnNo.style.top = `${randomY}px`;
+    }
+
+    btnNo.addEventListener("mouseenter", moverBotonNo);
+    btnNo.addEventListener("touchstart", (e) => {
+      e.preventDefault(); // evita que se quede presionado
+      moverBotonNo();
     });
 
     // Mensaje bonito para botón "Sí"
@@ -137,8 +138,7 @@
       img.style.animationDuration = `${5 + Math.random() * 5}s`;
       container.appendChild(img);
     }
-    
-    // 🦋 Crear mariposas animadas
+
     const container2 = document.getElementById("sadHamster-container");
     for (let i = 0; i < 10; i++) {
       const img = document.createElement("img");
@@ -146,9 +146,8 @@
       img.style.top = `${Math.random() * 100}%`;
       img.style.left = `${Math.random() * 100}%`;
       img.style.animationDuration = `${5 + Math.random() * 5}s`;
-      container.appendChild(img);
+      container2.appendChild(img);
     }
-
   </script>
 
 </body>
