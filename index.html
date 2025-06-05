@@ -66,6 +66,14 @@
       display: none;
     }
 
+    /* Video oculto al inicio */
+    #videoAmor {
+      display: none;
+      margin-top: 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    }
+
     /* 🦋 Mariposas flotantes */
     #mariposas-container img,
     #sadHamster-container img {
@@ -93,6 +101,19 @@
 
   <div id="mensaje"></div>
 
+  <!-- 🎥 Video que aparece al hacer clic en "Sí" -->
+  <iframe id="videoAmor"
+  width="500"
+  height="315"
+  src="https://www.youtube.com/embed/F80bsfPrgr4"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  style="display: none; position: absolute; top: 50%; left: 0; transform: translateY(-50%); border-radius: 32px;">
+</iframe>
+
+
   <!-- 🦋 Contenedor de mariposas -->
   <div id="mariposas-container"></div>
   <div id="sadHamster-container"></div>
@@ -115,17 +136,20 @@
 
     btnNo.addEventListener("mouseenter", moverBotonNo);
     btnNo.addEventListener("touchstart", (e) => {
-      e.preventDefault(); // evita que se quede presionado
+      e.preventDefault();
       moverBotonNo();
     });
 
-    // Mensaje bonito para botón "Sí"
+    // 🎉 Mensaje + Video al hacer clic en "Sí"
     const btnSi = document.getElementById("btn-si");
     const mensaje = document.getElementById("mensaje");
+    const video = document.getElementById("videoAmor");
 
     btnSi.addEventListener("click", () => {
       mensaje.textContent = "¡Yo también! ❤️";
       mensaje.style.display = "block";
+      video.style.display = "block";
+      video.play();
     });
 
     // 🦋 Crear mariposas animadas
